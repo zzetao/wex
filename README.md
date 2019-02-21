@@ -36,7 +36,7 @@ App({
 ```js
 Page({
   $data: [
-    'msg'
+    'count'
   ],
   data: {
 
@@ -54,6 +54,6 @@ Html 逻辑
 ```html
 <!-- pages/index/index.wxml -->
 <view>
-  <text> hello {{ $msg }} </text>
+  <text> count: {{ $count }} </text>
 </view>
 ```
