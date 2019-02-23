@@ -1,0 +1,19 @@
+{
+  "name": "wex",
+  "version": "1.0.0",
+  "description": "微信小程序 Vuex 状态管理",
+  "main": "src/wex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzetao/wex.git"
+  },
+  "author": "zzetao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zzetao/wex/issues"
+  },
+  "homepage": "https://github.com/zzetao/wex#readme"
+}
