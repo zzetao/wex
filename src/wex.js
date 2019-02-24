@@ -12,6 +12,15 @@ exports.Store = class Store {
     this._mutations = mutations
     this._actions = actions
     this._subscribers = []
+
+    const store = this
+    const { commit, dispatch } = this
+    this.dispatch = function boundDispatch(type, payload) {
+      return dispatch.call(store, type, payload)
+    }
+    this.commit = function boundCommit(type, payload) {
+      return commit.call(store, type, payload)
+    }
   }
 
   get state() {
@@ -49,7 +58,7 @@ exports.initial = function (store) {
   Page = function (pageOptions) {
     const originOnLoad = pageOptions.onLoad
     const originOnUnload = pageOptions.onUnload
-    const $data = pageOptions.$data
+    const $data = pageOptions.$data || []
 
     pageOptions.onLoad = function () {
       this.$store = store
@@ -61,7 +70,7 @@ exports.initial = function (store) {
       })
 
       // 执行原有 onLoad 函数
-      originOnLoad && originOnLoad.call(this)
+      originOnLoad && originOnLoad.call(this, ...arguments)
 
       // 将页面需要从 wex 的数据赋值到 Page
       const data = getDiffData($data, store.state)
